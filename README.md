@@ -12,34 +12,40 @@ Machine Learning project 17
 ## APIs Used for Data Collection
 
 1. **ATTOM API**  
-   Used to collect property data such as address, city, province, and zip code.
+   Used to collect property data such as address, city, province, country, yearBuild, and price.
 
 2. **Datafiniti API**  
-   Used to collect detailed property information including estimated prices and number of rooms.
+   Used to collect detailed property information including address, city, province, country, yearBuild, and price.
 
 
 ##  Data Collection & Cleaning Steps
 
-- Fetched data from both APIs using `requests` in Python.
-- Saved raw API data into:
+- Collected raw data from two public APIs (Datafiniti and ATTOM) using Python scripts
+- Saved API responses into:
   - `attom_raw.csv`
   - `datafiniti_raw.csv`
 - Cleaned and selected useful columns:
   - `address`, `city`, `province`, `yearBuilt`, and `price`
-- Combined both datasets into `merged_real_estate.csv`
+- Merged both datasets into one final file: `merged_real_estate.csv`
 
 
-##  Cleaning API (Optional)
+##  Prediction API (FastAPI)
 
-Implemented, and I run the cleaning API using:
+A REST API was implemented to predict property prices using the trained model.
 
-```bash
-- uvicorn cleaning_api:app --reload
-- Go to: http://127.0.0.1:8000/docs
-- Upload raw property data to /clean-data/
-  and receive cleaned JSON back.
-```
---- 
+### ▶ How to Run the API
+
+1. Save my model first:
+   ```python
+   joblib.dump(model_boosting, "model.pkl")
+   run the API using:
+    uvicorn predict_api:app --reload
+   Go to: http://127.0.0.1:8000/docs
+   Test the endpoint /predict with:
+   {"yearBuilt" : 2010 }
+   Receive a predicted price like:
+   { "predicted_price": 184700.0 }
+
 ## Modelling approch % Results
 
  Models Trained:
