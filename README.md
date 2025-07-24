@@ -7,7 +7,7 @@ Machine Learning project 17
 - Clean and combine data into a single dataset
 - Train machine learning models to predict property prices
 - Build a REST API to make real-time predictions
----
+
 
 ## APIs Used for Data Collection
 
@@ -17,7 +17,7 @@ Machine Learning project 17
 2. **Datafiniti API**  
    Used to collect detailed property information including estimated prices and number of rooms.
 
----
+
 ##  Data Collection & Cleaning Steps
 
 - Fetched data from both APIs using `requests` in Python.
@@ -28,7 +28,7 @@ Machine Learning project 17
   - `address`, `city`, `province`, `yearBuilt`, and `price`
 - Combined both datasets into `merged_real_estate.csv`
 
----
+
 ##  Cleaning API (Optional)
 
 Implemented, and I run the cleaning API using:
@@ -65,8 +65,23 @@ MAE Bar Comparison
 
 Histogram of Residual Errors
 
---- 
-
-# Best Performance: Random Forest and Gradient Boosting 
 
 
+## Model Evaluation Results:
+
+| Model              | MAE              | RMSE             | R² Score             |
+|-------------------|------------------|------------------|----------------------|
+| Linear Regression | 226,688.62       | 265,346.79       | -0.34                |
+| Decision Tree     | 269,926.92       | 464,841.72       | -3.11                |
+| Random Forest     | 264,880.14       | 378,002.66       | -1.72                |
+| Gradient Boosting | 248,499.93       | 435,217.15       | -2.61                |
+
+>  **MAE** = Mean Absolute Error (average price error)  
+>  **RMSE** = Root Mean Square Error (penalizes large errors)  
+>  **R² Score** = Model accuracy (closer to 1 is better, negative means poor fit)
+
+## Conclusion
+
+- All models had **negative R² scores**, which means the models do **not fit the data well**.
+- However, **Linear Regression** performed slightly better than others in terms of RMSE and R².
+- **Gradient Boosting** had the **lowest MAE**, which means smaller average error.
