@@ -63,7 +63,6 @@ Scatter plots of Actual vs Predicted
 
 MAE Bar Comparison
 
-Histogram of Residual Errors
 
 
 
